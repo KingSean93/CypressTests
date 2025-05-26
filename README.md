@@ -7,5 +7,3 @@ npm test
 
 open cypress 
 npm run open
-
-Change
