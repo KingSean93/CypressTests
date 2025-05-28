@@ -1,4 +1,21 @@
 //Cypress API specs
+describe('Get Tests', () => {
+  it('Get User Id 3', () =>{
+    cy.request({
+      method: 'GET',
+      url: 'https://jsonplaceholder.typicode.com/posts/',
+         headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: {
+        id: '1',
+      },
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      cy.log(response.body[0]);
+    });
+  });
+
   it('should return search results for a google book query', () => {
     cy.request({
       method: 'GET',
@@ -9,8 +26,10 @@
       expect(response.body.items[0].volumeInfo.title).to.include('Harry Potter');
     });
   });
+});
 
-  it('should return 200 for a mock POST endpoint', () => {
+describe('Post Tests', () => {
+ it('should return 200 for a mock POST endpoint', () => {
     // NOTE: This is a placeholder since Google APIs don't allow general POSTs for search
     cy.request({
       method: 'POST',
@@ -51,30 +70,17 @@
       expect(response.body.form.name).to.eq('Cypress');
     });
   });
+});
 
+describe('Delete Tests', () => {
     it('Delete and veriy that 1 does not exist', () => {
     cy.request({
       method: 'DELETE',
       url: 'https://jsonplaceholder.typicode.com/posts/1'
     }).then((response) => {
       expect(response.status).to.eq(200);
+      cy.log(response.body)
       expect(response.body).to.not.eq(1)
     });
   });
-
-  it('Get User Id 3', () =>{
-    cy.request({
-      method: 'GET',
-      url: 'https://jsonplaceholder.typicode.com/posts/',
-         headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      body: {
-        id: '1',
-      },
-    }).then((response) => {
-      expect(response.status).to.eq(200);
-      cy.log(response.body[0]);
-    });
-  });
-
+});
