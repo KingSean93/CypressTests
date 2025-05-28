@@ -1,18 +1,15 @@
 //Cypress API specs
-
-describe('Google Books API Test for 200 response and not 201', () => {
-  it('should return search results for a book query', () => {
+  it('should return search results for a google book query', () => {
     cy.request({
       method: 'GET',
       url: '/books/v1/volumes?q=harry+potter'
     }).then((response) => {
       expect(response.status).to.eq(200);
-      expect(response.status).to.not.eq(201);
+      expect(response.body.items).to.be.an('array');
+      expect(response.body.items[0].volumeInfo.title).to.include('Harry Potter');
     });
   });
-});
 
-describe('Google API POST Test - Mock Example', () => {
   it('should return 200 for a mock POST endpoint', () => {
     // NOTE: This is a placeholder since Google APIs don't allow general POSTs for search
     cy.request({
@@ -54,4 +51,30 @@ describe('Google API POST Test - Mock Example', () => {
       expect(response.body.form.name).to.eq('Cypress');
     });
   });
-});
+
+    it('Delete and veriy that 1 does not exist', () => {
+    cy.request({
+      method: 'DELETE',
+      url: 'https://jsonplaceholder.typicode.com/posts/1'
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      expect(response.body).to.not.eq(1)
+    });
+  });
+
+  it('Get User Id 3', () =>{
+    cy.request({
+      method: 'GET',
+      url: 'https://jsonplaceholder.typicode.com/posts/',
+         headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: {
+        id: '1',
+      },
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      cy.log(response.body[0]);
+    });
+  });
+
