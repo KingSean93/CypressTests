@@ -13,6 +13,7 @@ describe('Get Tests', () => {
     }).then((response) => {
       expect(response.status).to.eq(200);
       cy.log(response.body[0]);
+      //add part here to expect user 3
     });
   });
 
