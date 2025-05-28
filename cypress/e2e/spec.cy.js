@@ -1,6 +1,6 @@
 //Cypress API specs
 describe('Get Tests', () => {
-  it('Get User Id 3', () =>{
+  it('Get Users details', () =>{
     cy.request({
       method: 'GET',
       url: 'https://jsonplaceholder.typicode.com/posts/',
@@ -13,7 +13,8 @@ describe('Get Tests', () => {
     }).then((response) => {
       expect(response.status).to.eq(200);
       cy.log(response.body[0]);
-      //add part here to expect user 3
+      expect(response.body[0].title).to.include('sunt aut facere repellat provident occaecati excepturi optio reprehenderit');
+      expect(response.body[0].body).to.include('quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto');
     });
   });
 
