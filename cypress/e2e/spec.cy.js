@@ -84,3 +84,38 @@ describe('Delete Tests', () => {
     });
   });
 });
+
+describe('Put Tests', () => {
+  it('should update data using PUT to add New Sean Title', () => {
+    cy.request({
+      method: 'PUT',
+      url: 'https://jsonplaceholder.typicode.com/posts/1',
+      body: {
+        id: 1,
+        title: 'New Sean Title',
+        body: 'Updated body content',
+        userId: 1
+      }
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      cy.log(response.body.title);
+      expect(response.body.title).to.eq('New Sean Title');
+    });
+  });
+});
+
+describe('Patch Tests', () =>{
+ it('should partially update a post using PATCH with Seans Title', () => {
+    cy.request({
+      method: 'PATCH',
+      url: 'https://jsonplaceholder.typicode.com/posts/1',
+      body: {
+        title: 'Seans Title'
+      }
+    }).then((response) => {
+      expect(response.status).to.eq(200);
+      cy.log(response.body.title);
+      expect(response.body.title).to.eq('Seans Title');
+    });
+  });
+});
