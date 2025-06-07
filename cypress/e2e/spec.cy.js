@@ -18,7 +18,7 @@ describe('Get Tests', () => {
     });
   });
 
-  it('should return search results for a google book query', () => {
+  it('Should return search results for a google book query', () => {
     cy.request({
       method: 'GET',
       url: '/books/v1/volumes?q=harry+potter'
@@ -31,7 +31,7 @@ describe('Get Tests', () => {
 });
 
 describe('Post Tests', () => {
- it('should return 200 for a mock POST endpoint', () => {
+ it('Should return 200 for a mock POST endpoint', () => {
     // NOTE: This is a placeholder since Google APIs don't allow general POSTs for search
     cy.request({
       method: 'POST',
@@ -52,7 +52,7 @@ describe('Post Tests', () => {
     });
   });
 
-    it('should handle HTML response from a POST endpoint', () => {
+    it('Should handle HTML response from a POST endpoint', () => {
     cy.request({
       method: 'POST',
       url: 'https://postman-echo.com/post',
@@ -75,7 +75,7 @@ describe('Post Tests', () => {
 });
 
 describe('Delete Tests', () => {
-    it('Delete and veriy that 1 does not exist', () => {
+    it('Delete and verify that 1 does not exist', () => {
     cy.request({
       method: 'DELETE',
       url: 'https://jsonplaceholder.typicode.com/posts/1'
@@ -88,7 +88,7 @@ describe('Delete Tests', () => {
 });
 
 describe('Put Tests', () => {
-  it('should update data using PUT to add New Sean Title', () => {
+  it('Should update data using PUT to add New Sean Title', () => {
     cy.request({
       method: 'PUT',
       url: 'https://jsonplaceholder.typicode.com/posts/1',
@@ -107,7 +107,7 @@ describe('Put Tests', () => {
 });
 
 describe('Patch Tests', () =>{
- it('should partially update a post using PATCH with Seans Title', () => {
+ it('Should partially update a post using PATCH with Seans Title', () => {
     cy.request({
       method: 'PATCH',
       url: 'https://jsonplaceholder.typicode.com/posts/1',
